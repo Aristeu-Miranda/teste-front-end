@@ -10,6 +10,8 @@ html,
 body {
   height: 100%;
   font-family: 'Poppins';
+  background-color: #FFFFFF;
+  color: #9F9F9F
 }
 
 #root {
@@ -17,23 +19,11 @@ body {
 }
 
 .main-container {
-  max-width: 1440px;
+  max-width: 90rem;
   width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-@media (max-width: 768px) {
-  .main-container {
-    padding: 0 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .main-container {
-    padding: 0 12px;
-  }
+  border: 1px solid blue;
 }

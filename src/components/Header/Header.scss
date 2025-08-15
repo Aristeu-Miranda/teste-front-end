@@ -1,0 +1,26 @@
+$header-max-width: 80rem;
+
+.header {
+    width: 100%;
+    max-width: $header-max-width;
+    margin: 0 auto;
+    border: 1px solid red;
+
+    &-information {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 47.75rem;
+        margin: 0 auto;
+        height: 2rem;
+    }
+
+    &-search {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+        border: 1px solid blue;
+        height: 4.5rem;
+    }
+}
