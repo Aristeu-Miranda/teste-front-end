@@ -1,0 +1,7 @@
+import type { HTMLInputTypeAttribute } from "react"
+
+export type InputProps = {
+    placeholder: string
+    variant: 'search' | 'text'
+    type: HTMLInputTypeAttribute
+}

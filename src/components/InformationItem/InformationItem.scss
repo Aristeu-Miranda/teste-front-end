@@ -1,4 +1,4 @@
-$color-purple: #3019B2;
+@use '@/styles/variables.scss' as *;
 
 .information-item {
     display: flex;

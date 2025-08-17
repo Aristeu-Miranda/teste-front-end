@@ -1,26 +1,162 @@
-$header-max-width: 80rem;
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+$header-max-width: 70rem;
+$header-information-max-width: 47.75rem;
+$header-main-height: 4.5rem;
+$header-information-height: 2rem;
+
 
 .header {
     width: 100%;
     max-width: $header-max-width;
     margin: 0 auto;
-    border: 1px solid red;
+    position: relative;
 
     &-information {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        max-width: 47.75rem;
+        justify-content: center;
+        gap: 2rem;
+        max-width: $header-information-max-width;
         margin: 0 auto;
-        height: 2rem;
+        height: $header-information-height;
+
+        @media (max-width: $breakpoint-sm) {
+            display: none;
+        }
     }
 
-    &-search {
+    &-main {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin: 0 auto;
-        border: 1px solid blue;
-        height: 4.5rem;
+        height: $header-main-height;
+        padding: 0 1rem;
+        gap: 1.5rem;
+        border-top: 0.0625rem solid $color-gray-light;
+
+        @media (max-width: $breakpoint-sm) {
+            flex-direction: column;
+            height: auto;
+            padding: 1rem;
+            gap: 1rem;
+        }
+    }
+
+    &-logo {
+        flex-shrink: 0;
+
+        img {
+            height: 2.581rem;
+            width: 8.688rem;
+        }
+    }
+
+    &-search {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+
+        .action-button {
+            @include button-reset;
+            @include smooth-hover;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+
+            img {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+
+            &:hover {
+                background-color: $color-gray-light;
+            }
+        }
+    }
+
+    &-navigation {
+        border-top: 0.0625rem solid $color-gray-light;
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+
+        .nav-list {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            list-style: none;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            max-height: 2.5rem;
+            font-size: 0.75rem;
+
+            @media (max-width: $breakpoint-md) {
+                overflow-x: auto;
+                white-space: nowrap;
+                gap: 1.5rem;
+
+
+                li {
+                    flex: none;
+                    text-align: left;
+                }
+            }
+
+            @media (max-width: $breakpoint-sm) {
+                gap: 1rem;
+                flex-direction: column;
+                max-height: 100%;
+            }
+        }
+
+        .nav-link {
+            color: $color-text-secondary;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            @include smooth-hover(color);
+
+            &:hover {
+                color: $color-primary;
+            }
+
+            &--highlight {
+                color: $color-purple;
+            }
+        }
+
+        .nav-signature {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: $color-text-secondary;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            @include smooth-hover(color);
+
+            img {
+                width: 1.25rem;
+                height: 1.25rem;
+                filter: none;
+                @include smooth-hover(filter);
+            }
+
+            &:hover {
+                color: $color-primary;
+
+
+            }
+        }
     }
 }
