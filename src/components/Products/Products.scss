@@ -1,0 +1,32 @@
+@use '../../styles/variables' as *;
+
+.categories-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.625rem;
+    padding: 2.313rem 8.688rem;
+
+}
+
+.categories-list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.688rem;
+}
+
+@media (max-width: $breakpoint-sm) {
+
+    .categories-container {
+        padding: 2.313rem 1.25rem;
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .categories-list {
+        flex-wrap: wrap;
+    }
+}
