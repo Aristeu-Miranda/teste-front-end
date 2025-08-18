@@ -17,3 +17,12 @@ export const MAIN_CATEGORIES: readonly ProductsProps[] = [
     { category: "Esportes e Fitness", categoryLogo: runIcon },
     { category: "Moda", categoryLogo: fashionIcon }
 ] as const
+
+export const PRODUCT_CATEGORIES = [
+    "CELULAR",
+    "ACESSÓRIOS",
+    "TABLETS",
+    "NOTEBOOKS",
+    "TVS",
+    "VER TODOS"
+] as const

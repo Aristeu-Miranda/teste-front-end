@@ -1,5 +1,14 @@
 @use '../../styles/variables' as *;
 
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3.438rem;
+}
+
 .categories-container {
     width: 100%;
     display: flex;
@@ -18,15 +27,108 @@
     gap: 1.688rem;
 }
 
+.products-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.products-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 20px;
+}
+
+.products-title {
+    color: $color-blue;
+    font-size: 1.875rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.decorative-line {
+    width: 22.5rem;
+    height: 1px;
+    background-color: #DEDEDE;
+    flex-shrink: 0;
+}
+
+.category-nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-gray-medium;
+    overflow: hidden;
+}
+
+.category-item {
+    width: 100%;
+    max-width: 13.375rem;
+    max-height: 2.5rem;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: $color-white;
+    border-right: 1px solid $color-gray-medium;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:last-child {
+        border-right: none;
+    }
+
+    span {
+        font-size: 16px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+        color: $color-dark-light;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    &.active {
+        span {
+            color: $color-blue;
+            font-weight: bold;
+        }
+    }
+
+    &:hover:not(.active) {
+        background-color: $color-gray-extralight;
+    }
+}
+
 @media (max-width: $breakpoint-sm) {
 
     .categories-container {
         padding: 2.313rem 1.25rem;
+    }
+
+    .products-title {
+        font-size: 1.5rem;
     }
 }
 
 @media (max-width: $breakpoint-md) {
     .categories-list {
         flex-wrap: wrap;
+    }
+
+}
+
+@media (max-width: $breakpoint-lg) {
+    .decorative-line {
+        display: none;
     }
 }

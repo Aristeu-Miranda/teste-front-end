@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Category } from "../Category";
-import { MAIN_CATEGORIES } from "./Products.constants";
+import { MAIN_CATEGORIES, PRODUCT_CATEGORIES } from "./Products.constants";
 import './Products.scss'
 
 export const Products = () => {
 
     const [selectedCategory, setSelectedCategory] = useState<string | null>(MAIN_CATEGORIES[0].category);
+    const [selectedProduct, setSelectedProduct] = useState<string>(PRODUCT_CATEGORIES[0]);
 
     return (
         <main>
@@ -16,7 +17,24 @@ export const Products = () => {
                     ))}
                 </div>
             </nav>
-
+            <section className="products-list">
+                <div className="products-header">
+                    <div className="decorative-line"></div>
+                    <h2 className="products-title">Produtos relacionados</h2>
+                    <div className="decorative-line"></div>
+                </div>
+                <nav className="category-nav">
+                    {PRODUCT_CATEGORIES.map((category) => (
+                        <div
+                            key={category}
+                            className={`category-item ${selectedProduct === category ? 'active' : ''}`}
+                            onClick={() => setSelectedProduct(category)}
+                        >
+                            <span>{category}</span>
+                        </div>
+                    ))}
+                </nav>
+            </section>
         </main>
     );
 };
