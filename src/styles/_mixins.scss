@@ -25,9 +25,8 @@
     cursor: pointer;
     outline: none;
 
-    &:focus {
-        outline: 0.125rem solid $color-primary;
-        outline-offset: 0.125rem;
+    &:hover {
+        opacity: 0.8;
     }
 }
 
