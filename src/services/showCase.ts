@@ -1,9 +1,8 @@
 import type { Product, ShowcaseApiResponse } from "./showCase.types"
 
 const PROXY_PATH = '/econverse/teste-front-end/junior/tecnologia/lista-produtos/produtos.json'
-const DIRECT_URL = 'https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json'
 
-const SHOWCASE_URL = import.meta.env.DEV ? PROXY_PATH : DIRECT_URL
+const SHOWCASE_URL = PROXY_PATH
 
 export async function fetchShowcaseProducts(): Promise<Product[]> {
     const response = await fetch(SHOWCASE_URL, {

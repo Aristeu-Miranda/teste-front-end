@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/econverse/*"
+  to = "https://app.econverse.com.br/:splat"
+  status = 200
+  force = true
+
