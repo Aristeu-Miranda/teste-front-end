@@ -18,5 +18,15 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src')
     }
+  },
+  server: {
+    proxy: {
+      '/econverse': {
+        target: 'https://app.econverse.com.br',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (p) => p.replace(/^\/econverse/, '')
+      }
+    }
   }
 })

@@ -1,0 +1,58 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.carousel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.viewport {
+    flex: 1;
+    overflow: hidden;
+}
+
+.track {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav {
+    @include button-reset;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: $color-white;
+    border: 1px solid $color-gray-medium;
+    color: $color-dark;
+    font-size: 1.5rem;
+    line-height: 1;
+    box-shadow: 0 2px 8px $color-shadow;
+    @include smooth-hover;
+
+    &.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}
+
+@media (max-width: $breakpoint-lg) {
+    .track {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .track {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: $breakpoint-sm) {
+    .track {
+        grid-template-columns: 1fr;
+    }
+}

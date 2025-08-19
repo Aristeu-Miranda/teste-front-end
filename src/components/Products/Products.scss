@@ -6,7 +6,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 3.438rem;
+    padding: 0 1rem;
 }
 
 .categories-container {
@@ -15,7 +15,7 @@ main {
     align-items: center;
     justify-content: space-between;
     gap: 2.625rem;
-    padding: 2.313rem 8.688rem;
+    padding: 2.313rem 6.25rem;
 
 }
 
@@ -33,6 +33,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 0 3rem;
 }
 
 .products-header {
@@ -68,6 +69,7 @@ main {
     justify-content: center;
     border: 1px solid $color-gray-medium;
     overflow: hidden;
+
 }
 
 .category-item {
