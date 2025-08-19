@@ -1,4 +1,5 @@
 export type Product = {
+    id?: string
     productName: string
     descriptionShort: string
     photo: string

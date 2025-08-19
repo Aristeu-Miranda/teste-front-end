@@ -161,6 +161,10 @@ main {
         flex-wrap: wrap;
     }
 
+    .partners-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
 }
 
 @media (max-width: $breakpoint-lg) {

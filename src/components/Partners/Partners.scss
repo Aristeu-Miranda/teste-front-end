@@ -28,3 +28,17 @@
         color: $color-white;
     }
 }
+
+@media (max-width: $breakpoint-md) {
+    .partners {
+        padding: 2.313rem 1.25rem;
+    }
+
+    .partners-title {
+        font-size: 1.5rem;
+    }
+
+    .partners-description {
+        font-size: 0.875rem;
+    }
+}

@@ -29,9 +29,17 @@ export const Footer = () => {
                     <p className="newsletter-description">{`Assine a nossa newsletter e receba as novidades e conteúdos exclusivos da Econverse.`}</p>
                 </div>
                 <form className="newsletter-form" onSubmit={handleSubmit}>
-                    <Input placeholder="Digite seu nome" variant="text" type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                    <Input placeholder="Digite seu e-mail" variant="text" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    <Button variant='quaternary' type='submit'>INSCREVER</Button>
+                    <div className="newsletter-row">
+                        <Input placeholder="Digite seu nome" variant="text" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                        <Input placeholder="Digite seu e-mail" variant="text" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <Button variant='quaternary' type='submit'>INSCREVER</Button>
+                    </div>
+                    <div className="newsletter-checkbox">
+                        <input type="checkbox" id="newsletter-checkbox" />
+                        <label htmlFor="newsletter-checkbox">
+                            <span>Aceito os termos e condições</span>
+                        </label>
+                    </div>
                 </form>
             </section>
             <section className="social-media-container">

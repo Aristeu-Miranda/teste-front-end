@@ -6,6 +6,8 @@ import { useShowcaseProducts } from "@/services/showCase.hook";
 import { Carousel } from "../Carousel";
 import { Partners } from "../Partners";
 import { Brands } from "../Brands";
+import { Modal } from "../Modal";
+import { fetchProductById } from "@/services";
 
 export const Products = () => {
 
@@ -14,6 +16,30 @@ export const Products = () => {
     const { products, isLoading, error } = useShowcaseProducts();
 
     const [viewAllProducts, setViewAllProducts] = useState(false);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedProductData, setSelectedProductData] = useState<ReturnType<typeof Object> | null>(null as any);
+
+    const openModal = (productIndex: number) => {
+        setIsModalOpen(true);
+
+        const url = new URL(window.location.href);
+        url.searchParams.set('productId', String(productIndex));
+        window.history.pushState({}, '', url.toString());
+
+        fetchProductById(String(productIndex))
+            .then((p) => setSelectedProductData(p))
+            .catch(() => setSelectedProductData(null));
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedProductData(null);
+
+        const url = new URL(window.location.href);
+        url.searchParams.delete('productId');
+        window.history.replaceState({}, '', url.toString());
+    };
 
     return (
         <main>
@@ -43,7 +69,7 @@ export const Products = () => {
                 </nav>
             </section>
             <section>
-                <Carousel products={products} isLoading={isLoading} error={error} />
+                <Carousel products={products} isLoading={isLoading} error={error} onBuy={openModal} />
             </section>
             <section className="partners-container">
                 <Partners title="Parceiros" description="Conheça nossos parceiros" />
@@ -58,7 +84,7 @@ export const Products = () => {
                 <span onClick={() => setViewAllProducts(!viewAllProducts)}>Ver todos</span>
             </div>
             <section>
-                <Carousel products={products} isLoading={isLoading} error={error} viewAll={viewAllProducts} />
+                <Carousel products={products} isLoading={isLoading} error={error} viewAll={viewAllProducts} onBuy={openModal} />
             </section>
             <section className="partners-container">
                 <Partners title="Parceiros" description="Conheça nossos parceiros" />
@@ -81,8 +107,15 @@ export const Products = () => {
                 <span onClick={() => setViewAllProducts(!viewAllProducts)}>Ver todos</span>
             </div>
             <section>
-                <Carousel products={products} isLoading={isLoading} error={error} viewAll={viewAllProducts} />
+                <Carousel products={products} isLoading={isLoading} error={error} viewAll={viewAllProducts} onBuy={openModal} />
             </section>
+
+            <Modal
+                isOpen={isModalOpen}
+                product={selectedProductData as any}
+                onClose={closeModal}
+                onConfirm={() => { }}
+            />
         </main>
     );
 };

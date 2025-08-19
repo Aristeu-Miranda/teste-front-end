@@ -33,8 +33,26 @@ footer {
 
 .newsletter-form {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.newsletter-row {
     @include flex-between;
     gap: 0.5rem;
+}
+
+.newsletter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+
+    label span {
+        color: $color-white;
+        font-size: 0.875rem;
+    }
 }
 
 .social-media-container {
@@ -134,5 +152,19 @@ footer {
         padding-top: 2rem;
         gap: 2rem;
         flex-wrap: wrap;
+    }
+
+    .newsletter-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2.313rem 1.25rem;
+    }
+
+    .newsletter-content {
+        width: 100%;
+    }
+
+    .newsletter-form {
+        width: 100%;
     }
 }

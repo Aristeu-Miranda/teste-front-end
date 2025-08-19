@@ -5,7 +5,7 @@ import { Button } from '../Button'
 const formatCurrencyBRL = (value: number) =>
     new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)
 
-export const ProductCard = ({ product, isLoading, error }: ProductCardProps) => {
+export const ProductCard = ({ product, isLoading, error, onBuy }: ProductCardProps) => {
     if (isLoading) {
         return (
             <article className="product-card loading">
@@ -58,7 +58,14 @@ export const ProductCard = ({ product, isLoading, error }: ProductCardProps) => 
             </a>
 
             <div className="cta">
-                <Button variant="secondary">COMPRAR</Button>
+                <Button
+                    variant="secondary"
+                    onClick={() => {
+                        onBuy?.()
+                    }}
+                >
+                    COMPRAR
+                </Button>
             </div>
         </article>
     )

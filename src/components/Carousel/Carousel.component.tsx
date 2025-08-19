@@ -3,7 +3,7 @@ import './Carousel.scss'
 import type { CarouselProps } from './Carousel.types'
 import { ProductCard } from '../ProductCard'
 
-export const Carousel = ({ products, isLoading, error, itemsPerView = 4, step = 1, viewAll = false }: CarouselProps) => {
+export const Carousel = ({ products, isLoading, error, itemsPerView = 4, step = 1, viewAll = false, onBuy }: CarouselProps) => {
     const [currentIndex, setCurrentIndex] = useState(0)
 
     const canSlideLeft = currentIndex > 0
@@ -46,12 +46,12 @@ export const Carousel = ({ products, isLoading, error, itemsPerView = 4, step = 
                     {isLoading
                         ? Array.from({ length: itemsPerView }).map((_, index) => (
                             <div className="item" key={`skeleton-${index}`}>
-                                <ProductCard product={placeholderProduct} isLoading={true} error={null} />
+                                <ProductCard product={placeholderProduct} isLoading={true} error={null} onBuy={() => { }} />
                             </div>
                         ))
                         : visibleProducts.map((product, index) => (
                             <div className="item" key={`${product.productName}-${index}`}>
-                                <ProductCard product={product} isLoading={false} error={null} />
+                                <ProductCard product={product} isLoading={false} error={null} onBuy={() => onBuy?.(index)} />
                             </div>
                         ))}
                 </div>
@@ -70,12 +70,12 @@ export const Carousel = ({ products, isLoading, error, itemsPerView = 4, step = 
                     {isLoading
                         ? Array.from({ length: itemsPerView }).map((_, index) => (
                             <div className="item" key={`skeleton-${index}`}>
-                                <ProductCard product={placeholderProduct} isLoading={true} error={null} />
+                                <ProductCard product={placeholderProduct} isLoading={true} error={null} onBuy={() => { }} />
                             </div>
                         ))
                         : visibleProducts.map((product, index) => (
                             <div className="item" key={`${product.productName}-${index}`}>
-                                <ProductCard product={product} isLoading={false} error={null} />
+                                <ProductCard product={product} isLoading={false} error={null} onBuy={() => onBuy?.(index)} />
                             </div>
                         ))}
                 </div>

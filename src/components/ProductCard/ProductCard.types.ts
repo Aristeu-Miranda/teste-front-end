@@ -4,4 +4,5 @@ export type ProductCardProps = {
     product: Product
     isLoading: boolean
     error: Error | null
+    onBuy?: () => void
 }

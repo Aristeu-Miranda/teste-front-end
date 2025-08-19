@@ -7,6 +7,7 @@ export type CarouselProps = {
     itemsPerView?: number
     step?: number
     viewAll?: boolean
+    onBuy?: (index: number) => void
 }
 
 

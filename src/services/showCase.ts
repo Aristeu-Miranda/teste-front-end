@@ -1,7 +1,8 @@
 import type { Product, ShowcaseApiResponse } from "./showCase.types"
 
-const PROXY_PATH = import.meta.env.VITE_API_PROXY_PATH
-const DIRECT_URL = import.meta.env.VITE_API_DIRECT_URL
+const PROXY_PATH = '/econverse/teste-front-end/junior/tecnologia/lista-produtos/produtos.json'
+const DIRECT_URL = 'https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json'
+
 const SHOWCASE_URL = import.meta.env.DEV ? PROXY_PATH : DIRECT_URL
 
 export async function fetchShowcaseProducts(): Promise<Product[]> {
@@ -23,6 +24,18 @@ export async function fetchShowcaseProducts(): Promise<Product[]> {
     }
 
     return data.products
+}
+
+export async function fetchProductById(productId: string): Promise<Product> {
+    const allProducts = await fetchShowcaseProducts()
+
+    const normalizedId = decodeURIComponent(productId)
+
+    const index = Number.isNaN(Number(normalizedId)) ? -1 : Number(normalizedId)
+    const foundByIndex = index >= 0 && index < allProducts.length ? allProducts[index] : undefined
+    if (foundByIndex) return { ...foundByIndex, id: String(index) }
+
+    throw new Error("Produto não encontrado")
 }
 
 
