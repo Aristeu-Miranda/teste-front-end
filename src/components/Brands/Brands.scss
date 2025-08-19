@@ -24,3 +24,10 @@
         height: 7.813rem;
     }
 }
+
+@media (max-width: $breakpoint-md) {
+    .brands-container {
+        flex-wrap: wrap;
+    }
+
+}
