@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Category } from "../Category";
-import { MAIN_CATEGORIES, PRODUCT_CATEGORIES } from "./Products.constants";
+import { BRANDS, MAIN_CATEGORIES, PRODUCT_CATEGORIES } from "./Products.constants";
 import './Products.scss'
 import { useShowcaseProducts } from "@/services/showCase.hook";
 import { Carousel } from "../Carousel";
 import { Partners } from "../Partners";
+import { Brands } from "../Brands";
 
 export const Products = () => {
 
@@ -66,6 +67,22 @@ export const Products = () => {
             <div className="products-header">
                 <h2 className="products-title">Navegue por marcas</h2>
             </div>
+            <div className="brands-container">
+                {BRANDS.map(({ brandName, logo }) => (
+                    <Brands key={brandName} brandName={brandName} logo={logo} />
+                ))}
+            </div>
+            <div className="products-header">
+                <div className="decorative-line"></div>
+                <h2 className="products-title">Produtos relacionados</h2>
+                <div className="decorative-line"></div>
+            </div>
+            <div className="products-footer">
+                <span onClick={() => setViewAllProducts(!viewAllProducts)}>Ver todos</span>
+            </div>
+            <section>
+                <Carousel products={products} isLoading={isLoading} error={error} viewAll={viewAllProducts} />
+            </section>
         </main>
     );
 };
