@@ -33,20 +33,3 @@
 @mixin smooth-hover($property: all, $duration: 0.3s) {
     transition: $property $duration ease-in-out;
 }
-
-@mixin container {
-    max-width: $breakpoint-xl;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 $spacing-lg;
-
-    @media (max-width: $breakpoint-sm) {
-        padding: 0 $spacing-md;
-    }
-}
-
-@mixin text-truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
