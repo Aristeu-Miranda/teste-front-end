@@ -4,6 +4,7 @@ import { MAIN_CATEGORIES, PRODUCT_CATEGORIES } from "./Products.constants";
 import './Products.scss'
 import { useShowcaseProducts } from "@/services/showCase.hook";
 import { Carousel } from "../Carousel";
+import { Partners } from "../Partners";
 
 export const Products = () => {
 
@@ -41,7 +42,10 @@ export const Products = () => {
             <section>
                 <Carousel products={products} isLoading={isLoading} error={error} />
             </section>
-
+            <section className="partners-container">
+                <Partners title="Parceiros" description="Conheça nossos parceiros" />
+                <Partners title="Parceiros" description="Conheça nossos parceiros" />
+            </section>
         </main>
     );
 };

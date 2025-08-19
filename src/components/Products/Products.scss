@@ -1,4 +1,5 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 main {
     width: 100%;
@@ -109,6 +110,14 @@ main {
     &:hover:not(.active) {
         background-color: $color-gray-extralight;
     }
+}
+
+.partners-container {
+    width: 100%;
+    @include flex-center;
+    gap: 1rem;
+    margin-top: 4rem;
+    padding: 0 3rem;
 }
 
 @media (max-width: $breakpoint-sm) {
