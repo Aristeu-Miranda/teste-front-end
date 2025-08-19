@@ -15,17 +15,16 @@
     max-height: 21.875rem;
     border-radius: 1rem;
     gap: 3rem;
+    font-family: 'Poppins', sans-serif;
 
     &-title {
         font-size: 2.5rem;
         color: $color-white;
-        font-family: 'Poppins', sans-serif;
         font-weight: bold;
     }
 
     &-description {
         font-size: 1rem;
         color: $color-white;
-        font-family: 'Poppins', sans-serif;
     }
 }

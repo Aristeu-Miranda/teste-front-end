@@ -3,7 +3,7 @@ import './Carousel.scss'
 import type { CarouselProps } from './Carousel.types'
 import { ProductCard } from '../ProductCard'
 
-export const Carousel = ({ products, isLoading, error, itemsPerView = 4, step = 1 }: CarouselProps) => {
+export const Carousel = ({ products, isLoading, error, itemsPerView = 4, step = 1, viewAll = false }: CarouselProps) => {
     const [currentIndex, setCurrentIndex] = useState(0)
 
     const canSlideLeft = currentIndex > 0
@@ -11,8 +11,8 @@ export const Carousel = ({ products, isLoading, error, itemsPerView = 4, step = 
 
     const visibleProducts = useMemo(() => {
         if (isLoading) return []
-        return products.slice(currentIndex, currentIndex + itemsPerView)
-    }, [products, currentIndex, itemsPerView, isLoading])
+        return viewAll ? products : products.slice(currentIndex, currentIndex + itemsPerView)
+    }, [products, currentIndex, itemsPerView, isLoading, viewAll])
 
     const handlePrev = () => {
         if (!canSlideLeft) return
@@ -35,6 +35,26 @@ export const Carousel = ({ products, isLoading, error, itemsPerView = 4, step = 
         return (
             <div className="carousel error">
                 <p>Não foi possível carregar os produtos.</p>
+            </div>
+        )
+    }
+
+    if (viewAll) {
+        return (
+            <div className="carousel view-all">
+                <div className="products-grid">
+                    {isLoading
+                        ? Array.from({ length: itemsPerView }).map((_, index) => (
+                            <div className="item" key={`skeleton-${index}`}>
+                                <ProductCard product={placeholderProduct} isLoading={true} error={null} />
+                            </div>
+                        ))
+                        : visibleProducts.map((product, index) => (
+                            <div className="item" key={`${product.productName}-${index}`}>
+                                <ProductCard product={product} isLoading={false} error={null} />
+                            </div>
+                        ))}
+                </div>
             </div>
         )
     }

@@ -12,6 +12,8 @@ export const Products = () => {
     const [selectedProduct, setSelectedProduct] = useState<string>(PRODUCT_CATEGORIES[0]);
     const { products, isLoading, error } = useShowcaseProducts();
 
+    const [viewAllProducts, setViewAllProducts] = useState(false);
+
     return (
         <main>
             <nav className="categories-container">
@@ -46,6 +48,24 @@ export const Products = () => {
                 <Partners title="Parceiros" description="Conheça nossos parceiros" />
                 <Partners title="Parceiros" description="Conheça nossos parceiros" />
             </section>
+            <div className="products-header">
+                <div className="decorative-line"></div>
+                <h2 className="products-title">Produtos relacionados</h2>
+                <div className="decorative-line"></div>
+            </div>
+            <div className="products-footer">
+                <span onClick={() => setViewAllProducts(!viewAllProducts)}>Ver todos</span>
+            </div>
+            <section>
+                <Carousel products={products} isLoading={isLoading} error={error} viewAll={viewAllProducts} />
+            </section>
+            <section className="partners-container">
+                <Partners title="Parceiros" description="Conheça nossos parceiros" />
+                <Partners title="Parceiros" description="Conheça nossos parceiros" />
+            </section>
+            <div className="products-header">
+                <h2 className="products-title">Navegue por marcas</h2>
+            </div>
         </main>
     );
 };

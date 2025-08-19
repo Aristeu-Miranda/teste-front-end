@@ -6,6 +6,7 @@ export type CarouselProps = {
     error: Error | null
     itemsPerView?: number
     step?: number
+    viewAll?: boolean
 }
 
 
